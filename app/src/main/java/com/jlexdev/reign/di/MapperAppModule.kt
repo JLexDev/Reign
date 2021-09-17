@@ -1,5 +1,7 @@
 package com.jlexdev.reign.di
 
+import com.jlexdev.reign.mapper.ReignMapper
+import com.jlexdev.reign.mapper.ReignMapperImpl
 import org.koin.dsl.module
 
 /**
@@ -10,5 +12,5 @@ import org.koin.dsl.module
  **/
 
 val mapperAppModule = module {
-
+    single<ReignMapper>{ ReignMapperImpl() }
 }

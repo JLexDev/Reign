@@ -1,4 +1,4 @@
-package com.jlexdev.data.network.preferences
+package com.jlexdev.data.preferences
 
 /**
  * @author Joe Ramírez (@JLexDev) on 16/09/2021.

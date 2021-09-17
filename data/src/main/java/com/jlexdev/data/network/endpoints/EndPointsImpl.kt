@@ -1,5 +1,6 @@
 package com.jlexdev.data.network.endpoints
 
+import com.jlexdev.data.network.response.ReignResponse
 import com.jlexdev.data.network.utils.NetworkUtils
 import com.jlexdev.domain.entity.Either
 import com.jlexdev.domain.entity.Failure
@@ -25,6 +26,11 @@ class EndPointsImpl(private val apiService: ApiService,
         private const val KEY_CODE = "code"
         private const val KEY_MESSAGE = "message"
     }
+
+    // Get Hits
+    override suspend fun getHits(query: String): Either<Failure, ReignResponse>
+        = callService { apiService.getHits(query) }
+
 
     /**
      * Invoke the retrofit endpoint service in IO Context and after the response has been invoked

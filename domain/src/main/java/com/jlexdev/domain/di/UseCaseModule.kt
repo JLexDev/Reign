@@ -4,9 +4,8 @@ import org.koin.dsl.module
 
 /**
  * @author Joe Ramírez (@JLexDev) on 16/09/2021.
- * joeramirez@solera.pe
+ * 1jlex3@gmail.com
  * ·
- * Solera
  * Trujillo - Perú
  **/
 

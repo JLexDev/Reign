@@ -1,6 +1,6 @@
 package com.jlexdev.data.network.utils
 
-import com.jlexdev.data.network.preferences.SecurePreferences
+import com.jlexdev.data.preferences.SecurePreferences
 import okhttp3.Interceptor
 import okhttp3.Response
 

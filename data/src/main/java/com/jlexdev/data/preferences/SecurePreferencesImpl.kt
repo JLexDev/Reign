@@ -1,4 +1,4 @@
-package com.jlexdev.data.network.preferences
+package com.jlexdev.data.preferences
 
 import android.content.SharedPreferences
 import com.jlexdev.data.di.PREF_KEY_ACCESS_TOKEN

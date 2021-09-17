@@ -3,17 +3,16 @@ package com.jlexdev.data.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import com.jlexdev.data.network.preferences.SecurePreferences
-import com.jlexdev.data.network.preferences.SecurePreferencesImpl
+import com.jlexdev.data.preferences.SecurePreferences
+import com.jlexdev.data.preferences.SecurePreferencesImpl
 import org.koin.android.ext.koin.androidApplication
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 /**
  * @author Joe Ramírez (@JLexDev) on 16/09/2021.
- * joeramirez@solera.pe
+ * 1jlex3@gmail.com
  * ·
- * Solera
  * Trujillo - Perú
  **/
 
