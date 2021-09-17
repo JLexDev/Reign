@@ -1,6 +1,5 @@
 package com.jlexdev.reign.mapper
 
-import com.jlexdev.domain.entity.HitsEntity
 import com.jlexdev.domain.entity.ReignEntity
 import com.jlexdev.reign.model.HitsModel
 import com.jlexdev.reign.model.ReignModel
@@ -12,7 +11,7 @@ import com.jlexdev.reign.model.ReignModel
  * Trujillo - Perú
  **/
 
-class ReignMapperImpl : ReignMapper {
+class ReignModelMapperImpl : ReignModelMapper {
 
     override suspend fun hitsDomainToApp(reign: ReignEntity): ReignModel {
         return ReignModel(

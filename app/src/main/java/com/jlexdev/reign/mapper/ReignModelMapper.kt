@@ -10,7 +10,7 @@ import com.jlexdev.reign.model.ReignModel
  * Trujillo - Perú
  **/
 
-interface ReignMapper {
+interface ReignModelMapper {
 
     suspend fun hitsDomainToApp(reign: ReignEntity) : ReignModel
 }
