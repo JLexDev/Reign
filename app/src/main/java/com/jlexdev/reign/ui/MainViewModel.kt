@@ -6,6 +6,7 @@ import com.jlexdev.domain.entity.ReignEntity
 import com.jlexdev.domain.usecase.GetReignUseCase
 import com.jlexdev.reign.base.BaseViewModel
 import com.jlexdev.reign.mapper.ReignModelMapper
+import com.jlexdev.reign.model.HitsModel
 import com.jlexdev.reign.model.ReignModel
 import kotlinx.coroutines.Dispatchers
 
@@ -29,7 +30,6 @@ class MainViewModel (private val getReignUseCase: GetReignUseCase,
         }
     }
 
-
     init {
         executeGetReignUseCase()
     }
@@ -46,12 +46,6 @@ class MainViewModel (private val getReignUseCase: GetReignUseCase,
     private fun handleUseCaseSuccess(reign: ReignEntity) {
         _reign.value = reign
     }
-
-
-    fun refreshData() {
-        setRefreshing(true)
-    }
-
 }
 
 

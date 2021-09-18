@@ -1,5 +1,6 @@
 package com.jlexdev.domain.di
 
+import com.jlexdev.domain.usecase.GetReignUseCase
 import org.koin.dsl.module
 
 /**
@@ -10,5 +11,5 @@ import org.koin.dsl.module
  **/
 
 val useCaseModule = module {
-
+    factory { GetReignUseCase(get()) }
 }
