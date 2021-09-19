@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit
 
 val networkModule = module {
     single<NetworkUtils> { NetworkUtilsImpl(androidContext()) }
-    factory { SupportInterceptor(get()) }
+    factory { SupportInterceptor() }
     single { provideOkHttpClient(get()) }
     single { provideApi(get()) }
     single { provideRetrofit(get()) }

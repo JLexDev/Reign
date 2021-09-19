@@ -3,7 +3,7 @@ package com.jlexdev.reign
 import android.app.Application
 import com.jlexdev.data.di.mapperDataModule
 import com.jlexdev.data.di.networkModule
-import com.jlexdev.data.di.preferencesModule
+/*import com.jlexdev.data.di.preferencesModule*/
 import com.jlexdev.data.di.repositoryModule
 import com.jlexdev.domain.di.useCaseModule
 import com.jlexdev.reign.di.mapperAppModule
@@ -26,7 +26,7 @@ class ReignApplication : Application() {
             androidContext(this@ReignApplication)
             modules(arrayListOf(
                 mapperAppModule, viewModelModule,
-                mapperDataModule, networkModule, preferencesModule, repositoryModule,
+                mapperDataModule, networkModule, repositoryModule,
                 useCaseModule
             ))
         }

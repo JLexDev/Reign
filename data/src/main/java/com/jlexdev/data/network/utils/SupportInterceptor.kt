@@ -1,6 +1,5 @@
 package com.jlexdev.data.network.utils
 
-import com.jlexdev.data.preferences.SecurePreferences
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -11,7 +10,7 @@ import okhttp3.Response
  * Trujillo - Perú
  **/
 
-class SupportInterceptor(private val preferences : SecurePreferences) : Interceptor {
+class SupportInterceptor : Interceptor {
 
     /**
      * Interceptor class for setting of the headers for every request
@@ -21,7 +20,6 @@ class SupportInterceptor(private val preferences : SecurePreferences) : Intercep
         request = request.newBuilder()
             .addHeader("Content-Type", "application/json")
             .addHeader("Accept", "application/json")
-            .addHeader("Authorization", preferences.getAccessToken())
             .build()
         return chain.proceed(request)
     }
