@@ -10,4 +10,5 @@ package com.jlexdev.domain.entity
 data class HitsEntity (val createdAt: String,
                        val title: String?,
                        val author: String,
-                       val storyTitle: String?)
+                       val storyTitle: String?,
+                       val storyUrl: String?)

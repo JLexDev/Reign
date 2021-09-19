@@ -12,11 +12,10 @@ import androidx.databinding.ViewDataBinding
  * Trujillo - Perú
  **/
 
-abstract class BaseActivity<T: ViewDataBinding, out V : BaseViewModel<*>> : AppCompatActivity() {
+abstract class BaseActivity<T: ViewDataBinding, out V : BaseViewModel> : AppCompatActivity() {
 
     private lateinit var viewDataBinding: T
-    // private variable just for set the viewModel variable to the view (Data binding)
-    /*private var _viewModel: V? = null*/
+
     abstract val _viewModel: V
 
     abstract val getLayoutId : Int
@@ -28,11 +27,8 @@ abstract class BaseActivity<T: ViewDataBinding, out V : BaseViewModel<*>> : AppC
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId)
-        /*_viewModel = if (_viewModel == null) getViewModel else _viewModel*/
         viewDataBinding.setVariable(getBindingVariable, _viewModel)
-        /**
-         * use Fragment.viewLifecycleOwner for fragments
-         */
+
         viewDataBinding.lifecycleOwner = this
         viewDataBinding.executePendingBindings()
     }

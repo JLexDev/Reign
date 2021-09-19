@@ -1,5 +1,6 @@
-package com.jlexdev.reign.ui
+package com.jlexdev.reign.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -8,10 +9,12 @@ import com.jlexdev.reign.BR
 import com.jlexdev.reign.R
 import com.jlexdev.reign.base.BaseActivity
 import com.jlexdev.reign.databinding.ActivityMainBinding
-import com.jlexdev.reign.ui.adapter.HitsAdapter
+import com.jlexdev.reign.model.HitsModel
+import com.jlexdev.reign.ui.web.WebActivity
+import com.jlexdev.reign.ui.main.adapter.HitsAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNavigator {
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private val mainViewModel: MainViewModel by viewModel()
 
@@ -24,12 +27,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
 
     private lateinit var binding: ActivityMainBinding
 
-    private val hitsAdapter = HitsAdapter(arrayListOf())
+    private val hitsAdapter = HitsAdapter(arrayListOf()) { url, _ ->
+        navigateToWeb(url)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mainViewModel.setNavigator(this)
 
         bindLayout()
         setupObserve()
@@ -44,7 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
     }
 
     private fun setupObserve() {
-        _viewModel.reign.observe(this, Observer {
+        mainViewModel.reign.observe(this, Observer {
             hitsAdapter.addItems(it.hits)
         })
     }
@@ -56,8 +60,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
         }
     }
 
-    override fun navigateToWeb() {
-        /*startActivity(Intent(this, WebActivity::class.java))
-        finish()*/
+    fun navigateToWeb(url: HitsModel) {
+        startActivity(Intent(this, WebActivity::class.java).putExtra("URL", url.storyUrl))
     }
 }

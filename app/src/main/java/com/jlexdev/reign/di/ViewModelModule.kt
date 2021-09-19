@@ -1,6 +1,6 @@
 package com.jlexdev.reign.di
 
-import com.jlexdev.reign.ui.MainViewModel
+import com.jlexdev.reign.ui.main.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

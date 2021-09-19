@@ -1,5 +1,6 @@
 package com.jlexdev.data.network.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -13,5 +14,6 @@ data class HitsResponse (
     @SerializedName("created_at") val createdAt: String,
     @SerializedName("title") val title: String?,
     @SerializedName("author") val author: String,
-    @SerializedName("story_title") val storyTitle: String?
+    @SerializedName("story_title") val storyTitle: String?,
+    @SerializedName("story_url") val storyUrl: String?
 )

@@ -1,4 +1,4 @@
-package com.jlexdev.reign.ui.adapter
+package com.jlexdev.reign.ui.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,7 +16,8 @@ import com.jlexdev.reign.model.HitsModel
  * Trujillo - Perú
  **/
 
-class HitsAdapter(private val items: MutableList<HitsModel>) : RecyclerView.Adapter<HitsAdapter.HitsHolder>() {
+class HitsAdapter(private val items: MutableList<HitsModel>,
+                  val callback:(model: HitsModel, position: Int) -> Unit) : RecyclerView.Adapter<HitsAdapter.HitsHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HitsHolder {
         val binding: ItemHitsBinding? =
@@ -27,6 +28,9 @@ class HitsAdapter(private val items: MutableList<HitsModel>) : RecyclerView.Adap
     override fun onBindViewHolder(holder: HitsHolder, position: Int) {
         val hitsModel = items[position]
         holder.bind(model = hitsModel)
+        holder.itemBinding.root.setOnClickListener {
+            callback(hitsModel, position)
+        }
     }
 
     override fun getItemCount() = items.size
@@ -37,7 +41,7 @@ class HitsAdapter(private val items: MutableList<HitsModel>) : RecyclerView.Adap
         notifyDataSetChanged()
     }
 
-    inner class HitsHolder(private val itemBinding: ItemHitsBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+    inner class HitsHolder(val itemBinding: ItemHitsBinding) : RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(model: HitsModel) {
             itemBinding.setVariable(BR.model, model)
             itemBinding.executePendingBindings()

@@ -16,7 +16,7 @@ class ReignModelMapperImpl : ReignModelMapper {
     override suspend fun hitsDomainToApp(reign: ReignEntity): ReignModel {
         return ReignModel(
             hits = reign.hits.map { hits ->
-                HitsModel(createdAt = hits.createdAt, title = hits.title, author = hits.author, storyTitle = hits.storyTitle)
+                HitsModel(createdAt = hits.createdAt, title = hits.title, author = hits.author, storyTitle = hits.storyTitle, storyUrl = hits.storyUrl)
             },
             query = reign.query
         )

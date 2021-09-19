@@ -17,9 +17,7 @@ import kotlin.coroutines.CoroutineContext
  * Trujillo - Perú
  **/
 
-abstract class BaseViewModel<T> : ViewModel() {
-
-    private var navigator: WeakReference<T>? = null
+abstract class BaseViewModel : ViewModel() {
 
     private val mapperExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         setErrorFromMapperPresentation(throwable.message)
@@ -58,14 +56,6 @@ abstract class BaseViewModel<T> : ViewModel() {
 
     protected fun logInfo(infoMessage: String?) {
         Log.i(this.javaClass.simpleName, infoMessage?:"info message is null.")
-    }
-
-    fun getNavigator() : T? {
-        return navigator?.get()
-    }
-
-    fun setNavigator(navigator: T) {
-        this.navigator = WeakReference(navigator)
     }
 
     /**
@@ -129,11 +119,5 @@ abstract class BaseViewModel<T> : ViewModel() {
         _showEmptyView.postValue(false)
         _errorCause.postValue("Mapper presentation exception: $exceptionMessage")
         logError(exceptionMessage)
-    }
-
-    override fun onCleared() {
-        // Clear object for prevention of memory leaks.
-        navigator?.clear()
-        super.onCleared()
     }
 }

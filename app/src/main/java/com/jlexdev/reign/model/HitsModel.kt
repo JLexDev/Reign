@@ -14,4 +14,5 @@ import kotlinx.parcelize.Parcelize
 data class HitsModel (val createdAt: String,
                       val title: String?,
                       val author: String,
-                      val storyTitle: String?) : Parcelable
+                      val storyTitle: String?,
+                      val storyUrl: String?) : Parcelable

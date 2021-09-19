@@ -15,7 +15,7 @@ class ReignDataMapperImpl : ReignDataMapper {
 
     override suspend fun hitsDataToDomain(reign: ReignResponse): ReignEntity {
         return ReignEntity(
-            reign.hits.map { HitsEntity(it.createdAt, it.title, it.author, it.storyTitle) },
+            reign.hits.map { HitsEntity(it.createdAt, it.title, it.author, it.storyTitle, it.storyUrl) },
             reign.query
         )
     }
