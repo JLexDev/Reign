@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jlexdev.reign.BR
 import com.jlexdev.reign.R
@@ -57,6 +58,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         this.binding.rvList.apply {
             adapter = hitsAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
+            addItemDecoration(DividerItemDecoration(this@MainActivity, DividerItemDecoration.VERTICAL))
         }
     }
 
