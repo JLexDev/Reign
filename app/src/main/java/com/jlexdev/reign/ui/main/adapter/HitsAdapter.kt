@@ -1,5 +1,7 @@
 package com.jlexdev.reign.ui.main.adapter
 
+import android.content.Context
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -8,6 +10,10 @@ import com.jlexdev.reign.BR
 import com.jlexdev.reign.R
 import com.jlexdev.reign.databinding.ItemHitsBinding
 import com.jlexdev.reign.model.HitsModel
+import com.jlexdev.reign.ui.main.MainActivity
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * @author Joe Ramírez (@JLexDev) on 17/09/2021.
@@ -45,6 +51,21 @@ class HitsAdapter(private val items: MutableList<HitsModel>,
         fun bind(model: HitsModel) {
             itemBinding.setVariable(BR.model, model)
             itemBinding.executePendingBindings()
+            itemBinding.tvCreatedAt.text = getTimeAgo(model.createdAt)
         }
+    }
+
+    fun getTimeAgo(timeToParse: String) : String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        sdf.timeZone = TimeZone.getTimeZone("GMT")
+        var time: Long = 0
+        try {
+            time = sdf.parse(timeToParse).time
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+        val now = System.currentTimeMillis()
+        val ago = DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS)
+        return "- $ago"
     }
 }
