@@ -23,3 +23,6 @@ Don't need anything special to run the app.
 
 + Main branch:
 You can download the apk from this branch.
+
+Demo:
+https://github.com/JLexDev/Reign-test/blob/main/Demo%20Reign.jpeg
